@@ -14,17 +14,17 @@ knitr::opts_chunk$set(
 
 # powers
 
-This is an R package based on the original version from Vencenzo. 
+This is an R package based on the [original version](https://github.com/vincenzocoia/powers) from Vencenzo. 
 
 ## What did I do in this assignment?
 
 * I added a family of box-cox transforms, including `box2cox()`, `box2cox_reverse()` and `box2cox_2parameter` to the original `powers` package. 
 
-`box2cox()` function aims to do a Box-Cox transform.
+  `box2cox()` function aims to do a Box-Cox transform.
 
-`box2cox_reverse()` function aims to do a Box-Cox inverse transform.
+  `box2cox_reverse()` function aims to do a Box-Cox inverse transform.
 
-`box2cox_2parameter` function aims to do a Box-Cox transform which contains 2 parameters.
+  `box2cox_2parameter` function aims to do a Box-Cox transform which contains 2 parameters.
 
 * Document all exported functions.
 
@@ -39,13 +39,13 @@ You can install `powers` from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("STAT545-UBC-students/hw07-MeiqiYu/powers")
+devtools::install_github("STAT545-UBC-students/hw07-MeiqiYu")
 ```
 
 
 ## Example
 
-See the [vignette]() for more extensive use, but here's some examples:
+See the [vignette](https://github.com/STAT545-UBC-students/hw07-MeiqiYu/blob/master/vignettes/using_powers.Rmd) for more extensive use, but here's some examples:
 
 ```{r example}
 powers::box2cox(x=1:6,lambda = 2:7)
