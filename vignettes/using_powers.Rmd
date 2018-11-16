@@ -1,0 +1,110 @@
+---
+title: "Using the `powers` package"
+author: "Meiqi Yu"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the `powers` package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+__Note__: This package isn't actually meant to be "serious". I made it just for teaching purposes.
+
+Want to compute powers without having to use `^` or `**`? Give `sqrt` some friends by loading the `powers` package! 
+
+```{r}
+library(powers)
+```
+
+
+## Square, cube reciprocal functions
+
+Want squares, cubes, or reciprocals? Easy.
+
+```{r}
+square(1:10)
+cube(1:10)
+reciprocal(1:10)
+```
+
+`apply`-family friendly, too!
+
+```{r}
+my_list <- list(1:10, 0.5, -0.7)
+## So base-R-boring!
+lapply(my_list, function(x) x^2)
+## Use powers instead!
+lapply(my_list, square)
+```
+
+It even comes with the ability to display its output in plot form!
+
+```{r}
+reciprocal(1:10, plot_it=TRUE)
+```
+
+Wow!!!
+
+# box-cox transform
+
+We can do box-cox transform easily by `box2cox()`function. Due to the defination of box-cox trandform, x should be positive. In this function, x and lamda should be a vector of the same length, here is an example.
+
+```{r}
+box2cox(x=1:6,lambda = 2:7)
+```
+
+In some situation, if you enter x of negative values or zero, the function will run by adding a minimum value to x first in order to make x posive. A warning will also appear.
+
+```{r}
+box2cox(x=-3:-1,lambda = 2:4)
+```
+
+## reverse box-cox transform
+
+Reverse box-cox transform is also available by `box2cox_reverse` function.
+
+```{r}
+box2cox_reverse(x=1:6,lambda = 2:7)
+```
+
+Similar to `box2cox` function, if the input is not positive, this function will run by adding a minimum value to x first in order to make x posive. A warning will also appear.
+
+
+```{r}
+box2cox_reverse(x=-3:-1,lambda = 2:4)
+```
+
+## Two parameter box-cox transform
+
+Two parameter box-cox transform is available by `box2cox_2parameter` function.
+
+If lambda1 is not zero, the output equals to ((x[i]+lambda2)^lambda1 - 1) / lambda1, where x is the input.
+
+```{r}
+box2cox_2parameter(x=1:5,lambda1 = 2,lambda2 = 4)
+```
+
+If lambda is zero, the output equals to log(x+lambda2)
+
+```{r}
+box2cox_2parameter(x=1:5,lambda1 = 0,lambda2 = 4)
+```
+
+Similar to the two functions above, if the input is not positive, this function will run by adding a minimum value to x first in order to make x posive. A warning will also appear.
+
+```{r}
+box2cox_2parameter(x=-3:-1,lambda1=1,lambda2 = 2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
